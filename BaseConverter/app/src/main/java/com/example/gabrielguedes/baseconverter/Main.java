@@ -124,6 +124,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     private FragmentTransaction beginTransaction(){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(R.anim.fragment_in,R.anim.fragment_out);
         return ft;
     }
 
