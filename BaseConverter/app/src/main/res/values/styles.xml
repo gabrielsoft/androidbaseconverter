@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="ButtonStyleNumber" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
+        <item name="android:textColor">#FFFFFF</item>
+
+    </style>
+
+    <style name="ButtonStyleBinario" parent="ButtonStyleNumber">
+
+        <item name="android:background">@color/color_bin</item>
+
+    </style>
+
+    <style name="ButtonStyleDecimal" parent="ButtonStyleNumber">
+
+        <item name="android:background">@color/color_dec</item>
+
+    </style>
+
+    <style name="ButtonStyleHexadecimal" parent="ButtonStyleNumber">
+
+        <item name="android:background">@color/color_hex</item>
+
+    </style>
+
+    <style name="ButtonStyleOctal" parent="ButtonStyleNumber">
+
+        <item name="android:background">@color/color_oct</item>
+
+    </style>
+
+    <style name="DisplayStyle">
+        <item name="android:textSize">60sp</item>
+        <item name="android:textColor">#454541</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
+    <style name="ButtonStyleLetter" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:buttonStyle">?android:attr/borderlessButtonStyle</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#8C817F</item>
+
+    </style>
+
+</resources>

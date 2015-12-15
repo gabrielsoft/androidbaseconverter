@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rootLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="#F0D012"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/display"
+                style="@style/DisplayStyle"
+                android:text="1234"
+                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="4"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bt_backspace"
+                    android:src="@mipmap/ic_backspace"
+                    android:background="#F0D012"
+                    android:layout_margin="16dp"/>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bt_clean"
+                    android:src="@mipmap/ic_clean"
+                    android:background="#F0D012"
+                    android:layout_margin="16dp"/>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2.37"
+            android:id="@+id/view_a"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#454541"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:id="@+id/area_buttons">
+
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@mipmap/ic_plus"
+        android:id="@+id/fab_plus"
+
+        app:fabSize="normal"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:layout_anchor="@id/view_a"
+        app:layout_anchorGravity="top|right"
+        app:backgroundTint="#B90799"
+
+        ></android.support.design.widget.FloatingActionButton>
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_oct"
+        android:layout_marginRight="50dp"
+        android:visibility="invisible"
+        android:src="@mipmap/oct"
+
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/color_oct"
+        app:layout_anchor="@id/view_a"
+        app:layout_anchorGravity="right|top"
+        app:fabSize="mini">
+
+    </android.support.design.widget.FloatingActionButton>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_hex"
+        android:layout_marginRight="100dp"
+        android:visibility="invisible"
+        android:src="@mipmap/hex"
+
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/color_hex"
+        app:layout_anchor="@id/view_a"
+        app:layout_anchorGravity="right|top"
+        app:fabSize="mini">
+
+    </android.support.design.widget.FloatingActionButton>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_dec"
+        android:layout_marginRight="150dp"
+        android:visibility="invisible"
+        android:src="@mipmap/dec"
+
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/color_dec"
+        app:layout_anchor="@id/view_a"
+        app:layout_anchorGravity="right|top"
+        app:fabSize="mini">
+
+    </android.support.design.widget.FloatingActionButton>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fab_bin"
+        android:layout_marginRight="200dp"
+        android:visibility="invisible"
+        android:src="@mipmap/bin"
+
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/color_bin"
+        app:layout_anchor="@id/view_a"
+        app:layout_anchorGravity="right|top"
+        app:fabSize="mini">
+
+    </android.support.design.widget.FloatingActionButton>
+
+</android.support.design.widget.CoordinatorLayout>

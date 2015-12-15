@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="color_bin">#12B3DD</color>
+    <color name="color_dec">#E85627</color>
+    <color name="color_hex">#9EE690</color>
+    <color name="color_oct">#E73750</color>
+
+</resources>
