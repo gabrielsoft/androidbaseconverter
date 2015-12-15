@@ -50,6 +50,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         fabOct.setOnClickListener(this);
 
         ((ImageButton)findViewById(R.id.bt_clean)).setOnClickListener(this);
+        ((ImageButton)findViewById(R.id.bt_backspace)).setOnClickListener(this);
 
         onAttachKeyBoardDec();
 
@@ -80,6 +81,9 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.bt_clean:
                 display.cleanDisplay();
+                break;
+            case R.id.bt_backspace:
+                display.backspace();
 
         }
     }

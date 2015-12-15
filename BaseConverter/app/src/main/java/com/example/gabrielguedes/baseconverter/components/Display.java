@@ -34,4 +34,12 @@ public class Display implements Serializable{
     public void cleanDisplay(){
         display.setText("");
     }
+
+    public void backspace(){
+        String s = display.getText().toString();
+        if(s.length()>0){
+            s = s.substring(0,s.length()-1);
+            display.setText(s);
+        }
+    }
 }
