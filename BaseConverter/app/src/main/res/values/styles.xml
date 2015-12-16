@@ -40,7 +40,7 @@
 
     <style name="DisplayStyle">
         <item name="android:textSize">60sp</item>
-        <item name="android:textColor">#454541</item>
+        <item name="android:textColor">#8C817F</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">monospace</item>
         <item name="android:gravity">center</item>

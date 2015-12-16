@@ -24,8 +24,7 @@
                 android:layout_weight="1"
                 android:id="@+id/display"
                 style="@style/DisplayStyle"
-                android:text="1234"
-                 />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,20 +58,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2.37"
+            android:layout_weight="2.39"
             android:id="@+id/view_a"
             android:orientation="vertical"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#454541"/>
+                android:background="#F0D012"/>
+
+
         </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.1"
             android:background="#FFFFFF"
             android:id="@+id/area_buttons">
 

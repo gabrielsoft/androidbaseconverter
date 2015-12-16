@@ -1,10 +1,12 @@
 package com.example.gabrielguedes.baseconverter;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,6 +27,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     private boolean isFabOpen = false;
 
     private Display display;
+
+    private MyThread threadAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
         onAttachKeyBoardDec();
 
+        threadAnimation = new MyThread();
+
     }
 
 
@@ -61,23 +67,26 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.fab_plus:
-                animationFabPlus();
+                if(!isFabOpen){
+                    threadAnimation = new MyThread();
+                    threadAnimation.execute();
+                }
                 break;
             case R.id.fab_bin:
                 onAttachKeyBoardBin();
-                animationFabPlus();
+                closeFab(); threadAnimation.cancel(true);
                 break;
             case R.id.fab_dec:
                 onAttachKeyBoardDec();
-                animationFabPlus();
+                closeFab();threadAnimation.cancel(true);
                 break;
             case R.id.fab_hex:
                 onAttachKeyBoardHex();
-                animationFabPlus();
+                closeFab();threadAnimation.cancel(true);
                 break;
             case R.id.fab_oct:
                 onAttachKeyBoardOct();
-                animationFabPlus();
+                closeFab();threadAnimation.cancel(true);
                 break;
             case R.id.bt_clean:
                 display.cleanDisplay();
@@ -91,44 +100,54 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     private void animationFabPlus(){
 
         if(isFabOpen){
-            fabBin.startAnimation(fabClose);
-            fabDec.startAnimation(fabClose);
-            fabHex.startAnimation(fabClose);
-            fabOct.startAnimation(fabClose);
-
-            fabBin.setClickable(false);
-            fabDec.setClickable(false);
-            fabHex.setClickable(false);
-            fabOct.setClickable(false);
-
-            fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_RIGHT);
-
-            isFabOpen = false;
+           closeFab();
         }
         else{
-            fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_LEFT).
-                    withEndAction(new Runnable() {
-                        @Override
-                        public void run() {
-                            fabBin.startAnimation(fabOpen);
-                            fabDec.startAnimation(fabOpen);
-                            fabHex.startAnimation(fabOpen);
-                            fabOct.startAnimation(fabOpen);
-
-                            fabBin.setClickable(true);
-                            fabDec.setClickable(true);
-                            fabHex.setClickable(true);
-                            fabOct.setClickable(true);
-                        }
-                    });
-            isFabOpen = true;
+            openFab();
         }
+    }
+
+    private void openFab(){
+        fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_LEFT).
+                withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        fabBin.startAnimation(fabOpen);
+                        fabDec.startAnimation(fabOpen);
+                        fabHex.startAnimation(fabOpen);
+                        fabOct.startAnimation(fabOpen);
+
+                        fabBin.setClickable(true);
+                        fabDec.setClickable(true);
+                        fabHex.setClickable(true);
+                        fabOct.setClickable(true);
+
+                    }
+                });
+
+        isFabOpen = true;
+    }
+
+    private void closeFab(){
+        fabBin.startAnimation(fabClose);
+        fabDec.startAnimation(fabClose);
+        fabHex.startAnimation(fabClose);
+        fabOct.startAnimation(fabClose);
+
+        fabBin.setClickable(false);
+        fabDec.setClickable(false);
+        fabHex.setClickable(false);
+        fabOct.setClickable(false);
+
+        fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_RIGHT);
+
+        isFabOpen = false;
     }
 
     private FragmentTransaction beginTransaction(){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.setCustomAnimations(R.anim.fragment_in,R.anim.fragment_out);
+        ft.setCustomAnimations(R.anim.fragment_in, R.anim.fragment_out);
         return ft;
     }
 
@@ -155,4 +174,28 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         ft.replace(R.id.area_buttons,KeyBoardOct.newInstance(display));
         ft.commit();
     }
+
+    private class MyThread extends AsyncTask<Void,Void,Void> {
+
+        @Override
+        protected Void doInBackground(Void... params){
+
+            animationFabPlus();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            animationFabPlus();
+        }
+    }
+
 }
