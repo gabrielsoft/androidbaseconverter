@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import com.example.gabrielguedes.baseconverter.components.Display;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by Gabriel Guedes on 14/12/2015.
  */
@@ -27,15 +30,22 @@ public class KeyBoardDec extends Fragment implements View.OnClickListener{
         super.onCreateView(inflater, container, savedInstanceState);
 
         View layout = inflater.inflate(R.layout.dec_layout,null);
+        ButterKnife.bind(this, layout);
 
         for(int i=0;i<10;i++)
-            ((Button)layout.findViewById(Constants.buttons_id.get(i))).setOnClickListener(this);
+            ((Button)(layout.findViewById(Constants.buttons.get(i)))).setOnClickListener(this);
 
         return layout;
     }
 
     @Override
     public void onClick(View v) {
-        disp.setText(((Button)(v)).getText().toString());
+        disp.setText(((Button) (v)).getText().toString());
+    }
+
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

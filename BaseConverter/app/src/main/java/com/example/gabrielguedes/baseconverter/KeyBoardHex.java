@@ -29,7 +29,7 @@ public class KeyBoardHex extends Fragment implements View.OnClickListener{
         View layout = inflater.inflate(R.layout.hex_layout,null);
 
         for(int i=0;i<16;i++)
-            ((Button)layout.findViewById(Constants.buttons_id.get(i))).setOnClickListener(this);
+            ((Button)(layout.findViewById(Constants.buttons.get(i)))).setOnClickListener(this);
 
         return layout;
     }
@@ -37,6 +37,5 @@ public class KeyBoardHex extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         disp.setText(((Button)(v)).getText().toString());
-
     }
 }

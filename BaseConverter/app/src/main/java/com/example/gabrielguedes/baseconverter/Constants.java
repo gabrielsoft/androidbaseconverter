@@ -1,7 +1,5 @@
 package com.example.gabrielguedes.baseconverter;
 
-import android.view.animation.Animation;
-
 import java.util.HashMap;
 
 /**
@@ -10,7 +8,8 @@ import java.util.HashMap;
 public class Constants {
     public static final String CONTEUDO_DISPLAY = "CONTEUDO_DISPLAY";
 
-    protected static final HashMap<Integer,Integer> buttons_id = new HashMap<Integer,Integer>(){{
+
+    protected static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{
         put(0,R.id.bt0);
         put(1,R.id.bt1);
         put(2,R.id.bt2);
