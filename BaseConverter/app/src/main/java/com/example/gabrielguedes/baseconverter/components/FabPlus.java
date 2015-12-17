@@ -42,7 +42,7 @@ public class FabPlus {
         fabHex.toClose();
         fabOct.toClose();
 
-        fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_RIGHT)
+        fabPlus.animate().x(fabOct.getFab().getX()-50)
                 .withStartAction(new Runnable() {
                     @Override
                     public void run() {
@@ -60,7 +60,7 @@ public class FabPlus {
     }
 
     public void toOpen(){
-        fabPlus.animate().x(Constants.FAB_TRANSLATE_TO_LEFT).
+        fabPlus.animate().x(fabBin.getFab().getX()-200).
                 withEndAction(new Runnable() {
                     @Override
                     public void run() {

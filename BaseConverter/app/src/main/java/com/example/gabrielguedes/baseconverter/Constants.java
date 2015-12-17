@@ -8,8 +8,8 @@ import java.util.HashMap;
  * Created by Gabriel Guedes on 14/12/2015.
  */
 public class Constants {
-    public static final float FAB_TRANSLATE_TO_RIGHT = 756f;
-    public static final float FAB_TRANSLATE_TO_LEFT = 64f;
+    public static final String CONTEUDO_DISPLAY = "CONTEUDO_DISPLAY";
+
     protected static final HashMap<Integer,Integer> buttons_id = new HashMap<Integer,Integer>(){{
         put(0,R.id.bt0);
         put(1,R.id.bt1);

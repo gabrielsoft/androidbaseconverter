@@ -1,5 +1,6 @@
 package com.example.gabrielguedes.baseconverter;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gabrielguedes.baseconverter.components.Display;
 import com.example.gabrielguedes.baseconverter.components.FabBin;
@@ -16,14 +18,31 @@ import com.example.gabrielguedes.baseconverter.components.FabHex;
 import com.example.gabrielguedes.baseconverter.components.FabOct;
 import com.example.gabrielguedes.baseconverter.components.FabPlus;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class Main extends AppCompatActivity implements View.OnClickListener {
+
     private FabPlus fabPlus;
     private FabBin fabBin;
     private FabDec fabDec;
     private FabHex fabHex;
     private FabOct fabOct;
-
     private Display display;
+
+    @Bind(R.id.fab_plus)
+    FloatingActionButton fplus;
+    @Bind(R.id.fab_bin)
+    FloatingActionButton fbin;
+    @Bind(R.id.fab_dec)
+    FloatingActionButton fdec;
+    @Bind(R.id.fab_hex)
+    FloatingActionButton fhex;
+    @Bind(R.id.fab_oct)
+    FloatingActionButton foct;
+    @Bind(R.id.display)
+    TextView disp;
+
     private MyThread threadAnimation;
 
     private Animations animations;
@@ -32,18 +51,20 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+        ButterKnife.bind(this);
 
-        display = new Display((TextView)findViewById(R.id.display));
+        display = new Display(disp);
+
+        configContentDisplay(savedInstanceState);
 
         animations = new Animations(getApplicationContext());
 
-        fabBin = new FabBin((FloatingActionButton) findViewById(R.id.fab_bin));
-        fabDec = new FabDec((FloatingActionButton) findViewById(R.id.fab_dec));
-        fabHex = new FabHex((FloatingActionButton) findViewById(R.id.fab_hex));
-        fabOct = new FabOct((FloatingActionButton) findViewById(R.id.fab_oct));
+        fabBin = new FabBin(fbin);
+        fabDec = new FabDec(fdec);
+        fabHex = new FabHex(fhex);
+        fabOct = new FabOct(foct);
 
-        fabPlus = new FabPlus(((FloatingActionButton) findViewById(R.id.fab_plus)),
-                            fabBin,fabDec,fabHex,fabOct);
+        fabPlus = new FabPlus(fplus,fabBin,fabDec,fabHex,fabOct);
 
         fabPlus.getFab().setOnClickListener(this);
         fabBin.getFab().setOnClickListener(this);
@@ -60,7 +81,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         ((ImageButton)findViewById(R.id.bt_backspace)).setOnClickListener(this);
 
         onAttachKeyBoardDec();
-
     }
 
     @Override
@@ -127,6 +147,35 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         FragmentTransaction ft = beginTransaction();
         ft.replace(R.id.area_buttons,KeyBoardOct.newInstance(display));
         ft.commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String s = display.getText();
+        outState.putString(Constants.CONTEUDO_DISPLAY, s);
+    }
+
+    private void configContentDisplay(Bundle savedInstanceState){
+        if(savedInstanceState!=null){
+            String s = savedInstanceState.getString(Constants.CONTEUDO_DISPLAY);
+            display.setText(s);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
+            Toast.makeText(this,"LANDSCAPE",Toast.LENGTH_SHORT);
+        else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
+            Toast.makeText(this,"PORTRAIT",Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
 }

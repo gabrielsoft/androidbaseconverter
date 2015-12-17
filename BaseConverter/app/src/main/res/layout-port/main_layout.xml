@@ -65,7 +65,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#F0D012"/>
+                android:background="#F0D012"
+                android:id="@+id/bar"/>
 
 
         </LinearLayout>
@@ -107,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fab_oct"
-        android:layout_marginRight="50dp"
+        android:layout_marginRight="16dp"
         android:visibility="invisible"
         android:src="@mipmap/oct"
 
@@ -124,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fab_hex"
-        android:layout_marginRight="100dp"
+        android:layout_marginRight="66dp"
         android:visibility="invisible"
         android:src="@mipmap/hex"
 
@@ -141,7 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fab_dec"
-        android:layout_marginRight="150dp"
+        android:layout_marginRight="116dp"
         android:visibility="invisible"
         android:src="@mipmap/dec"
 
@@ -158,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fab_bin"
-        android:layout_marginRight="200dp"
+        android:layout_marginRight="166dp"
         android:visibility="invisible"
         android:src="@mipmap/bin"
 

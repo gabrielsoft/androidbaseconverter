@@ -113,9 +113,25 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:enabled="false"
+            style="@style/ButtonStyleHexadecimal"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="@string/n0"
             android:id="@+id/bt0"
             android:layout_weight="1"
+            style="@style/ButtonStyleHexadecimal"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:enabled="false"
             style="@style/ButtonStyleHexadecimal"
             />
 

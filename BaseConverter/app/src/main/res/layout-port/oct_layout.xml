@@ -88,6 +88,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:enabled="false"
+            style="@style/ButtonStyleOctal"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/n1"
             android:id="@+id/bt1"
             style="@style/ButtonStyleOctal"
