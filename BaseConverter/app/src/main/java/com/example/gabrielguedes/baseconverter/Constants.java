@@ -1,13 +1,15 @@
 package com.example.gabrielguedes.baseconverter;
 
+import android.view.animation.Animation;
+
 import java.util.HashMap;
 
 /**
  * Created by Gabriel Guedes on 14/12/2015.
  */
 public class Constants {
-    protected static final float FAB_TRANSLATE_TO_RIGHT = 756f;
-    protected static final float FAB_TRANSLATE_TO_LEFT = 64f;
+    public static final float FAB_TRANSLATE_TO_RIGHT = 756f;
+    public static final float FAB_TRANSLATE_TO_LEFT = 64f;
     protected static final HashMap<Integer,Integer> buttons_id = new HashMap<Integer,Integer>(){{
         put(0,R.id.bt0);
         put(1,R.id.bt1);
@@ -27,4 +29,5 @@ public class Constants {
         put(15,R.id.btf);
 
     }};
+
 }
