@@ -1,6 +1,5 @@
 package com.example.gabrielguedes.baseconverter;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gabrielguedes.baseconverter.components.Display;
 import com.example.gabrielguedes.baseconverter.components.FabBin;
@@ -42,10 +40,16 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     FloatingActionButton foct;
     @Bind(R.id.display)
     TextView disp;
+    @Bind(R.id.bt_clean)
+    ImageButton btClean;
+    @Bind(R.id.bt_backspace)
+    ImageButton btBackspace;
 
     private MyThread threadAnimation;
 
     private Animations animations;
+
+    private String tag_fragment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +58,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         ButterKnife.bind(this);
 
         display = new Display(disp);
-
-        configContentDisplay(savedInstanceState);
 
         animations = new Animations(getApplicationContext());
 
@@ -77,10 +79,11 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         fabHex.setAnimations(animations);
         fabOct.setAnimations(animations);
 
-        ((ImageButton)findViewById(R.id.bt_clean)).setOnClickListener(this);
-        ((ImageButton)findViewById(R.id.bt_backspace)).setOnClickListener(this);
+        btClean.setOnClickListener(this);
+        btBackspace.setOnClickListener(this);
 
-        onAttachKeyBoardDec();
+        configContentDisplay(savedInstanceState);
+        configFragment(savedInstanceState);
     }
 
     @Override
@@ -127,26 +130,30 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
     private void onAttachKeyBoardHex(){
         FragmentTransaction ft = beginTransaction();
-        ft.replace(R.id.area_buttons,KeyBoardHex.newInstance(display));
+        ft.replace(R.id.area_buttons,KeyBoardHex.newInstance(display),Constants.TAG_HEXADECIMAL);
         ft.commit();
+        tag_fragment = Constants.TAG_HEXADECIMAL;
     }
 
     private void onAttachKeyBoardBin(){
         FragmentTransaction ft = beginTransaction();
-        ft.replace(R.id.area_buttons,KeyBoardBin.newInstance(display));
+        ft.replace(R.id.area_buttons,KeyBoardBin.newInstance(display),Constants.TAG_BINARY);
         ft.commit();
+        tag_fragment = Constants.TAG_BINARY;
     }
 
     private void onAttachKeyBoardDec(){
         FragmentTransaction ft = beginTransaction();
-        ft.replace(R.id.area_buttons,KeyBoardDec.newInstance(display));
+        ft.replace(R.id.area_buttons,KeyBoardDec.newInstance(display),Constants.TAG_DECIMAL);
         ft.commit();
+        tag_fragment = Constants.TAG_DECIMAL;
     }
 
     private void onAttachKeyBoardOct(){
         FragmentTransaction ft = beginTransaction();
-        ft.replace(R.id.area_buttons,KeyBoardOct.newInstance(display));
+        ft.replace(R.id.area_buttons,KeyBoardOct.newInstance(display),Constants.TAG_OCTAL);
         ft.commit();
+        tag_fragment = Constants.TAG_OCTAL;
     }
 
     @Override
@@ -154,6 +161,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         super.onSaveInstanceState(outState);
         String s = display.getText();
         outState.putString(Constants.CONTEUDO_DISPLAY, s);
+        outState.putString(Constants.TAG_FRAGMENT,tag_fragment);
     }
 
     private void configContentDisplay(Bundle savedInstanceState){
@@ -163,13 +171,27 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-            Toast.makeText(this,"LANDSCAPE",Toast.LENGTH_SHORT);
-        else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
-            Toast.makeText(this,"PORTRAIT",Toast.LENGTH_SHORT);
+    private void configFragment(Bundle savedInstanceState){
+        if(savedInstanceState!=null){
+            String s = savedInstanceState.getString(Constants.TAG_FRAGMENT);
+            chooseFragment(s);
+        }
+        else{
+            chooseFragment(Constants.TAG_DECIMAL);
+        }
+    }
+
+    private void chooseFragment(String tag){
+        switch(tag){
+            case Constants.TAG_BINARY:
+                onAttachKeyBoardBin(); break;
+            case Constants.TAG_HEXADECIMAL:
+                onAttachKeyBoardHex(); break;
+            case Constants.TAG_OCTAL:
+                onAttachKeyBoardOct(); break;
+            default:
+                onAttachKeyBoardDec();
+        }
     }
 
     @Override

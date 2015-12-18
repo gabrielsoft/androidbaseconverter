@@ -24,6 +24,11 @@ public class KeyBoardBin extends Fragment implements View.OnClickListener{
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
         super.onCreateView(inflater, container, savedInstanceState);
         View layout = inflater.inflate(R.layout.bin_layout,null);
@@ -39,4 +44,8 @@ public class KeyBoardBin extends Fragment implements View.OnClickListener{
         disp.setText(((Button) (v)).getText().toString());
     }
 
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+    }
 }

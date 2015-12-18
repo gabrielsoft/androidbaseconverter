@@ -7,6 +7,11 @@ import java.util.HashMap;
  */
 public class Constants {
     public static final String CONTEUDO_DISPLAY = "CONTEUDO_DISPLAY";
+    public static final String TAG_FRAGMENT = "TAG_FRAGMENT";
+    public static final String TAG_BINARY = "BINARY";
+    public static final String TAG_DECIMAL = "DECIMAL";
+    public static final String TAG_HEXADECIMAL = "HEXADECIMAL";
+    public static final String TAG_OCTAL = "OCTAL";
 
 
     protected static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{

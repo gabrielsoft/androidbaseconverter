@@ -26,11 +26,12 @@
                 style="@style/DisplayStyle"
                 />
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_weight="4"
+                android:layout_weight="3"
                 >
 
                 <ImageButton
@@ -49,9 +50,7 @@
                     android:layout_margin="16dp"/>
 
 
-
             </LinearLayout>
-
 
         </LinearLayout>
 
@@ -79,9 +78,6 @@
             android:id="@+id/area_buttons">
 
         </FrameLayout>
-
-
-
 
     </LinearLayout>
 
