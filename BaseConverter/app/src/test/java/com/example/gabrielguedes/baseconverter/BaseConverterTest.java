@@ -90,4 +90,7 @@ public class BaseConverterTest {
         String number_binary = baseConverter.convertOctalToHexadecimal("272");
         Assert.assertEquals("ba",number_binary);
     }*/
+    @Test
+    public void convert_from_to(){
+    }
 }

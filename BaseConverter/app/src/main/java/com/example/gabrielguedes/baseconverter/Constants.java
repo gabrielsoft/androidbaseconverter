@@ -12,6 +12,10 @@ public class Constants {
     public static final String TAG_DECIMAL = "DECIMAL";
     public static final String TAG_HEXADECIMAL = "HEXADECIMAL";
     public static final String TAG_OCTAL = "OCTAL";
+    public static final int BASE_INFO_BINARY = 2;
+    public static final int BASE_INFO_DECIMAL = 10;
+    public static final int BASE_INFO_HEXADECIMAL = 16;
+    public static final int BASE_INFO_OCTAL = 8;
 
 
     protected static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{

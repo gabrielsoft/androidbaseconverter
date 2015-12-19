@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.gabrielguedes.baseconverter.baseconverter_operations.BaseConverter;
 import com.example.gabrielguedes.baseconverter.components.Display;
 
 
@@ -24,6 +25,16 @@ public class KeyBoardOct extends Fragment implements View.OnClickListener{
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        String n = convert(disp.getText());
+        disp.cleanDisplay();
+        disp.setText(n);
+        disp.setBaseCurrent(Constants.BASE_INFO_OCTAL);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
         super.onCreateView(inflater,container,savedInstanceState);
 
@@ -38,6 +49,20 @@ public class KeyBoardOct extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         disp.setText(((Button) (v)).getText().toString());
+    }
+
+    private String convert(String number){
+        if(!number.equals("") && number!=null){
+            switch(disp.getBaseCurrent()){
+                case Constants.BASE_INFO_BINARY:
+                    return BaseConverter.convertBinaryToOctal(number);
+                case Constants.BASE_INFO_DECIMAL:
+                    return BaseConverter.convertDecimalToOctal(number);
+                case Constants.BASE_INFO_HEXADECIMAL:
+                    return BaseConverter.convertHexadecimalToOctal(number);
+            }
+        }
+        return (disp.getText()==null ? "":disp.getText());
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.gabrielguedes.baseconverter.components;
 
 import android.widget.TextView;
 
+import com.example.gabrielguedes.baseconverter.Constants;
+
 import java.io.Serializable;
 
 /**
@@ -9,9 +11,11 @@ import java.io.Serializable;
  */
 public class Display implements Serializable{
     private TextView display;
+    private int baseCurrent;
 
     public Display(TextView display){
         this.display = display;
+        setBaseCurrent(Constants.BASE_INFO_DECIMAL);
     }
 
     public boolean isEmpty(){
@@ -33,6 +37,12 @@ public class Display implements Serializable{
 
     public void cleanDisplay(){
         display.setText("");
+    }
+    public void setBaseCurrent(int baseCurrent){
+        this.baseCurrent = baseCurrent;
+    }
+    public int getBaseCurrent(){
+        return baseCurrent;
     }
 
     public void backspace(){

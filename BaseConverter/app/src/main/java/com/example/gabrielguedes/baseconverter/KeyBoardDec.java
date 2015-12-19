@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.gabrielguedes.baseconverter.baseconverter_operations.BaseConverter;
 import com.example.gabrielguedes.baseconverter.components.Display;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -23,6 +23,16 @@ public class KeyBoardDec extends Fragment implements View.OnClickListener{
         KeyBoardDec dec = new KeyBoardDec();
 
         return dec;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        String n = convert(disp.getText());
+        disp.cleanDisplay();
+        disp.setText(n);
+        disp.setBaseCurrent(Constants.BASE_INFO_DECIMAL );
     }
 
     @Override
@@ -47,5 +57,19 @@ public class KeyBoardDec extends Fragment implements View.OnClickListener{
     public void onDestroyView(){
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    private String convert(String number){
+        if(!number.equals("") && number!=null){
+            switch(disp.getBaseCurrent()){
+                case Constants.BASE_INFO_BINARY:
+                    return BaseConverter.convertBinaryToDecimal(number);
+                case Constants.BASE_INFO_HEXADECIMAL:
+                    return BaseConverter.convertHexadecimalToDecimal(number);
+                case Constants.BASE_INFO_OCTAL:
+                    return BaseConverter.convertOctalToDecimal(number);
+            }
+        }
+        return (disp.getText()==null ? "":disp.getText());
     }
 }
