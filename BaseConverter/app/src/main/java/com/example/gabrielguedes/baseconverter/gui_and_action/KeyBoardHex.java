@@ -1,4 +1,4 @@
-package com.example.gabrielguedes.baseconverter;
+package com.example.gabrielguedes.baseconverter.gui_and_action;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.gabrielguedes.baseconverter.R;
 import com.example.gabrielguedes.baseconverter.baseconverter_operations.BaseConverter;
 import com.example.gabrielguedes.baseconverter.components.Display;
+import com.example.gabrielguedes.baseconverter.utilities.Constants;
+import com.example.gabrielguedes.baseconverter.utilities.DigitsControl;
 
 /**
  * Created by Gabriel Guedes on 14/12/2015.
@@ -27,10 +30,13 @@ public class KeyBoardHex extends Fragment implements View.OnClickListener{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        String n = convert(disp.getText());
-        disp.cleanDisplay();
-        disp.setText(n);
-        disp.setBaseCurrent(Constants.BASE_INFO_HEXADECIMAL);
+        if(disp.getBaseCurrent()!=Constants.BASE_INFO_HEXADECIMAL){
+            String n = convert(disp.getText());
+            disp.cleanDisplay();
+            disp.setText(n);
+            DigitsControl.controlDigitStatic(disp.referenceDisplay());
+            disp.setBaseCurrent(Constants.BASE_INFO_HEXADECIMAL);
+        }
     }
 
     @Override
@@ -47,7 +53,13 @@ public class KeyBoardHex extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        disp.setText(((Button) (v)).getText().toString());
+        if(!disp.isEmpty()){
+            long numero = Long.parseLong(BaseConverter.convertHexadecimalToDecimal(disp.getText()));
+            if(numero<Constants.LIMIT_NUMBER)
+                disp.setText(((Button) (v)).getText().toString());
+        }
+        else
+            disp.setText(((Button) (v)).getText().toString());
     }
 
     private String convert(String number){

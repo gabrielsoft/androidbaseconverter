@@ -1,4 +1,4 @@
-package com.example.gabrielguedes.baseconverter;
+package com.example.gabrielguedes.baseconverter.utilities;
 
 import android.os.AsyncTask;
 import android.util.Log;

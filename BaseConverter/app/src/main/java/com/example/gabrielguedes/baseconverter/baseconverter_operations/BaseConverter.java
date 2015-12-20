@@ -1,7 +1,5 @@
 package com.example.gabrielguedes.baseconverter.baseconverter_operations;
 
-import com.example.gabrielguedes.baseconverter.Constants;
-
 /**
  * Created by Gabriel Guedes on 18/12/2015.
  */

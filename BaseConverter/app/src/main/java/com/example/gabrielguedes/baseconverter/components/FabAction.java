@@ -1,6 +1,6 @@
 package com.example.gabrielguedes.baseconverter.components;
 
-import com.example.gabrielguedes.baseconverter.Animations;
+import com.example.gabrielguedes.baseconverter.utilities.Animations;
 
 /**
  * Created by Gabriel Guedes on 16/12/2015.

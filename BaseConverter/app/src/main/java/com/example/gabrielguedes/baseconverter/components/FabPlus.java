@@ -1,7 +1,6 @@
 package com.example.gabrielguedes.baseconverter.components;
 
 import android.support.design.widget.FloatingActionButton;
-import com.example.gabrielguedes.baseconverter.Constants;
 
 /**
  * Created by Gabriel Guedes on 16/12/2015.

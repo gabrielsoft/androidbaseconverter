@@ -1,4 +1,4 @@
-package com.example.gabrielguedes.baseconverter;
+package com.example.gabrielguedes.baseconverter.gui_and_action;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.gabrielguedes.baseconverter.R;
 import com.example.gabrielguedes.baseconverter.components.Display;
 import com.example.gabrielguedes.baseconverter.components.FabBin;
 import com.example.gabrielguedes.baseconverter.components.FabDec;
 import com.example.gabrielguedes.baseconverter.components.FabHex;
 import com.example.gabrielguedes.baseconverter.components.FabOct;
 import com.example.gabrielguedes.baseconverter.components.FabPlus;
+import com.example.gabrielguedes.baseconverter.utilities.Animations;
+import com.example.gabrielguedes.baseconverter.utilities.Constants;
+import com.example.gabrielguedes.baseconverter.utilities.MyThread;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,8 +52,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     private MyThread threadAnimation;
 
     private Animations animations;
-
-    private String tag_fragment = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,30 +132,26 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
     private void onAttachKeyBoardHex(){
         FragmentTransaction ft = beginTransaction();
-        ft.replace(R.id.area_buttons,KeyBoardHex.newInstance(display),Constants.TAG_HEXADECIMAL);
+        ft.replace(R.id.area_buttons,KeyBoardHex.newInstance(display), Constants.TAG_HEXADECIMAL);
         ft.commit();
-        tag_fragment = Constants.TAG_HEXADECIMAL;
     }
 
     private void onAttachKeyBoardBin(){
         FragmentTransaction ft = beginTransaction();
         ft.replace(R.id.area_buttons,KeyBoardBin.newInstance(display),Constants.TAG_BINARY);
         ft.commit();
-        tag_fragment = Constants.TAG_BINARY;
     }
 
     private void onAttachKeyBoardDec(){
         FragmentTransaction ft = beginTransaction();
         ft.replace(R.id.area_buttons,KeyBoardDec.newInstance(display),Constants.TAG_DECIMAL);
         ft.commit();
-        tag_fragment = Constants.TAG_DECIMAL;
     }
 
     private void onAttachKeyBoardOct(){
         FragmentTransaction ft = beginTransaction();
         ft.replace(R.id.area_buttons,KeyBoardOct.newInstance(display),Constants.TAG_OCTAL);
         ft.commit();
-        tag_fragment = Constants.TAG_OCTAL;
     }
 
     @Override
@@ -161,7 +159,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         super.onSaveInstanceState(outState);
         String s = display.getText();
         outState.putString(Constants.CONTEUDO_DISPLAY, s);
-        outState.putString(Constants.TAG_FRAGMENT,tag_fragment);
+        outState.putInt(Constants.TAG_FRAGMENT,display.getBaseCurrent());
     }
 
     private void configContentDisplay(Bundle savedInstanceState){
@@ -173,21 +171,21 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
     private void configFragment(Bundle savedInstanceState){
         if(savedInstanceState!=null){
-            String s = savedInstanceState.getString(Constants.TAG_FRAGMENT);
-            chooseFragment(s);
+            int base = savedInstanceState.getInt(Constants.TAG_FRAGMENT);
+            chooseFragment(base);
         }
         else{
-            chooseFragment(Constants.TAG_DECIMAL);
+            chooseFragment(Constants.BASE_INFO_DECIMAL);
         }
     }
 
-    private void chooseFragment(String tag){
-        switch(tag){
-            case Constants.TAG_BINARY:
+    private void chooseFragment(int base){
+        switch(base){
+            case Constants.BASE_INFO_BINARY:
                 onAttachKeyBoardBin(); break;
-            case Constants.TAG_HEXADECIMAL:
+            case Constants.BASE_INFO_HEXADECIMAL:
                 onAttachKeyBoardHex(); break;
-            case Constants.TAG_OCTAL:
+            case Constants.BASE_INFO_OCTAL:
                 onAttachKeyBoardOct(); break;
             default:
                 onAttachKeyBoardDec();

@@ -1,4 +1,6 @@
-package com.example.gabrielguedes.baseconverter;
+package com.example.gabrielguedes.baseconverter.utilities;
+
+import com.example.gabrielguedes.baseconverter.R;
 
 import java.util.HashMap;
 
@@ -12,14 +14,17 @@ public class Constants {
     public static final String TAG_DECIMAL = "DECIMAL";
     public static final String TAG_HEXADECIMAL = "HEXADECIMAL";
     public static final String TAG_OCTAL = "OCTAL";
+
     public static final int BASE_INFO_BINARY = 2;
     public static final int BASE_INFO_DECIMAL = 10;
     public static final int BASE_INFO_HEXADECIMAL = 16;
     public static final int BASE_INFO_OCTAL = 8;
 
+    public static final long LIMIT_NUMBER = 999999999999999L;
 
-    protected static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{
-        put(0,R.id.bt0);
+
+    public static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{
+        put(0, R.id.bt0);
         put(1,R.id.bt1);
         put(2,R.id.bt2);
         put(3,R.id.bt3);
