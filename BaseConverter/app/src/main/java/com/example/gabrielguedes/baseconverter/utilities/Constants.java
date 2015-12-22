@@ -21,7 +21,7 @@ public class Constants {
     public static final int BASE_INFO_OCTAL = 8;
 
     public static final long LIMIT_NUMBER = 999999999999999L;
-
+    public static final int PIXEL_ONE_DIGIT = 120;
 
     public static final HashMap<Integer,Integer> buttons = new HashMap<Integer,Integer>(){{
         put(0, R.id.bt0);

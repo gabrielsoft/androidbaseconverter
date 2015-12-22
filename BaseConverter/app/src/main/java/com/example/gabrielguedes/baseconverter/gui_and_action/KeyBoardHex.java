@@ -34,7 +34,7 @@ public class KeyBoardHex extends Fragment implements View.OnClickListener{
             String n = convert(disp.getText());
             disp.cleanDisplay();
             disp.setText(n);
-            DigitsControl.controlDigitStatic(disp.referenceDisplay());
+            new DigitsControl(disp.referenceDisplay()).controlDigitStatic();
             disp.setBaseCurrent(Constants.BASE_INFO_HEXADECIMAL);
         }
     }

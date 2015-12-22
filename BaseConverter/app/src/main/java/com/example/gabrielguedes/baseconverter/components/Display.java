@@ -2,6 +2,7 @@ package com.example.gabrielguedes.baseconverter.components;
 
 import android.widget.TextView;
 
+import com.example.gabrielguedes.baseconverter.utilities.Constants;
 import com.example.gabrielguedes.baseconverter.utilities.DigitsControl;
 
 import java.io.Serializable;
@@ -17,6 +18,7 @@ public class Display implements Serializable{
     public Display(TextView display){
         this.display = display;
         digitsControl = new DigitsControl(display);
+        digitsControl.controlDigitStatic();
     }
 
     public boolean isEmpty(){
@@ -26,7 +28,7 @@ public class Display implements Serializable{
     public void setText(String text){
         String s = isEmpty() ? text: display.getText()+text;
         display.setText(s);
-        digitsControl.controlDigitDinamic();
+        digitsControl.controlDigitDinamic(Constants.PIXEL_ONE_DIGIT);
     }
 
     public String getText(){
@@ -54,6 +56,6 @@ public class Display implements Serializable{
             s = s.substring(0,s.length()-1);
             display.setText(s);
         }
-        digitsControl.controlDigitDinamic();
+        digitsControl.controlDigitDinamic(-Constants.PIXEL_ONE_DIGIT);
     }
 }
