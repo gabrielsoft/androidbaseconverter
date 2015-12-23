@@ -25,5 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:design:22.2.1'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.github.traex.rippleeffect:library:1.3'
 
 }

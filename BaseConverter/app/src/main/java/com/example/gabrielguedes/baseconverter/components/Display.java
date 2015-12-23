@@ -17,8 +17,7 @@ public class Display implements Serializable{
 
     public Display(TextView display){
         this.display = display;
-        digitsControl = new DigitsControl(display);
-        digitsControl.controlDigitStatic();
+        digitsControl = new DigitsControl(this.display);
     }
 
     public boolean isEmpty(){
@@ -29,6 +28,10 @@ public class Display implements Serializable{
         String s = isEmpty() ? text: display.getText()+text;
         display.setText(s);
         digitsControl.controlDigitDinamic(Constants.PIXEL_ONE_DIGIT);
+    }
+    public void setTextAll(String textAll){
+        display.setText(textAll);
+        digitsControl.controlDigitStatic();
     }
 
     public String getText(){
@@ -42,6 +45,7 @@ public class Display implements Serializable{
     public void cleanDisplay(){
         display.setText("");
         digitsControl.setSizeFontDefault();
+        digitsControl.cleanCount();
     }
     public void setBaseCurrent(int baseCurrent){
         this.baseCurrent = baseCurrent;
@@ -55,7 +59,7 @@ public class Display implements Serializable{
         if(s.length()>0){
             s = s.substring(0,s.length()-1);
             display.setText(s);
+            digitsControl.controlDigitDinamic(-Constants.PIXEL_ONE_DIGIT);
         }
-        digitsControl.controlDigitDinamic(-Constants.PIXEL_ONE_DIGIT);
     }
 }

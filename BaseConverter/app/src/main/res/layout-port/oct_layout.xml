@@ -10,30 +10,42 @@
         android:orientation="horizontal"
         android:layout_weight="1">
 
-        <Button
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n5"
-            android:id="@+id/bt5"
-            style="@style/ButtonStyleOctal"
-            />
-        <Button
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n5"
+                android:id="@+id/bt5"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n6"
-            android:id="@+id/bt6"
-            style="@style/ButtonStyleOctal"
-            />
-        <Button
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n6"
+                android:id="@+id/bt6"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n7"
-            android:id="@+id/bt7"
-            style="@style/ButtonStyleOctal"
-            />
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n7"
+                android:id="@+id/bt7"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
 
     </LinearLayout>
 
@@ -43,30 +55,42 @@
         android:orientation="horizontal"
         android:layout_weight="1">
 
-        <Button
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n2"
-            android:id="@+id/bt2"
-            style="@style/ButtonStyleOctal"
-            />
-        <Button
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n2"
+                android:id="@+id/bt2"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n3"
-            android:id="@+id/bt3"
-            style="@style/ButtonStyleOctal"
-            />
-        <Button
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n3"
+                android:id="@+id/bt3"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n4"
-            android:id="@+id/bt4"
-            style="@style/ButtonStyleOctal"
-            />
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n4"
+                android:id="@+id/bt4"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
 
     </LinearLayout>
 
@@ -76,14 +100,18 @@
         android:orientation="horizontal"
         android:layout_weight="1">
 
-        <Button
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n0"
-            android:id="@+id/bt0"
-            style="@style/ButtonStyleOctal"
-            />
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n0"
+                android:id="@+id/bt0"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -91,14 +119,18 @@
             android:enabled="false"
             style="@style/ButtonStyleOctal"
             />
-        <Button
+        <com.andexert.library.RippleView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/n1"
-            android:id="@+id/bt1"
-            style="@style/ButtonStyleOctal"
-            />
+            android:layout_weight="1">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/n1"
+                android:id="@+id/bt1"
+                style="@style/ButtonStyleOctal"
+                />
+        </com.andexert.library.RippleView>
 
 
     </LinearLayout>

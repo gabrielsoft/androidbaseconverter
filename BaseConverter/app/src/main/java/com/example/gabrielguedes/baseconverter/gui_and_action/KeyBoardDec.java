@@ -35,10 +35,10 @@ public class KeyBoardDec extends Fragment implements View.OnClickListener{
         if(disp.getBaseCurrent()!=Constants.BASE_INFO_DECIMAL){
             String n = convert(disp.getText());
             disp.cleanDisplay();
-            disp.setText(n);
-            new DigitsControl(disp.referenceDisplay()).controlDigitStatic();
+            disp.setTextAll(n);
             disp.setBaseCurrent(Constants.BASE_INFO_DECIMAL );
         }
+
     }
 
     @Override

@@ -60,7 +60,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         ButterKnife.bind(this);
 
         display = new Display(disp);
-
         animations = new Animations(getApplicationContext());
 
         fabBin = new FabBin(fbin);
@@ -165,7 +164,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     private void configContentDisplay(Bundle savedInstanceState){
         if(savedInstanceState!=null){
             String s = savedInstanceState.getString(Constants.CONTEUDO_DISPLAY);
-            display.setText(s);
+            display.setTextAll(s);
         }
     }
 

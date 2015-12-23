@@ -6,14 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center" >
-    <Button
+
+    <com.andexert.library.RippleView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/n0"
-        android:id="@+id/bt0"
-        style="@style/ButtonStyleBinario"
-        />
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/n1"
+            android:id="@+id/bt1"
+            style="@style/ButtonStyleBinario"
+            />
+    </com.andexert.library.RippleView>
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,13 +28,19 @@
         android:background="#58A7E8"
         style="@style/ButtonStyleBinario"
         />
-    <Button
+    <com.andexert.library.RippleView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/n1"
-        android:id="@+id/bt1"
-        style="@style/ButtonStyleBinario"
-        />
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/n0"
+            android:id="@+id/bt0"
+            style="@style/ButtonStyleBinario"
+            />
+    </com.andexert.library.RippleView>
 
 </LinearLayout>

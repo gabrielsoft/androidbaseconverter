@@ -11,13 +11,13 @@ public class DigitsControl {
     private static TextView display;
     private static float fontSizeDefault = 60;
     private boolean flip = false;
-    private int displayWidth;
+    public int displayWidth;
     private int countDigits;
 
     public DigitsControl(TextView display){
         this.display = display;
-        calcWidth(this.display);
         countDigits = 0;
+        calcWidth();
     }
 
     public void controlDigitDinamic(int pixel){
@@ -33,11 +33,12 @@ public class DigitsControl {
     }
     public void controlDigitStatic(){
         int length = display.getText().length();
-        countDigits+=length*Constants.PIXEL_ONE_DIGIT;
+        countDigits += length*Constants.PIXEL_ONE_DIGIT;
         if(displayWidth<countDigits)
             setSizeFontSmall();
-        else
-            setSizeFontDefault();
+    }
+    public void cleanCount(){
+        countDigits = 0;
     }
 
     public static void setSizeFontDefault(){
@@ -46,14 +47,13 @@ public class DigitsControl {
     public static void setSizeFontSmall(){
         display.setTextSize(TypedValue.COMPLEX_UNIT_SP,fontSizeDefault/2);
     }
-    private void calcWidth(final TextView textView){
-        ViewTreeObserver observer = textView.getViewTreeObserver();
-        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+    private void calcWidth(){
+        display.postDelayed(new Runnable() {
             @Override
-            public void onGlobalLayout() {
-                displayWidth = textView.getWidth();
+            public void run() {
+                displayWidth = display.getWidth();
             }
-        });
+        },1);
     }
 
 }
