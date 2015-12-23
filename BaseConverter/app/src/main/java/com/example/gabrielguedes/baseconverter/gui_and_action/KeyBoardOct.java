@@ -11,7 +11,6 @@ import com.example.gabrielguedes.baseconverter.R;
 import com.example.gabrielguedes.baseconverter.baseconverter_operations.BaseConverter;
 import com.example.gabrielguedes.baseconverter.components.Display;
 import com.example.gabrielguedes.baseconverter.utilities.Constants;
-import com.example.gabrielguedes.baseconverter.utilities.DigitsControl;
 
 
 /**

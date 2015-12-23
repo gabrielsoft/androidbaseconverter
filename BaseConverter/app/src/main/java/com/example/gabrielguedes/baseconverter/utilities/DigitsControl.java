@@ -7,11 +7,10 @@ import android.widget.TextView;
  * Created by Gabriel Guedes on 19/12/2015.
  */
 public class DigitsControl {
-    private final int LIMIT_DIGIT = 24;
     private static TextView display;
     private static float fontSizeDefault = 60;
     private boolean flip = false;
-    public int displayWidth;
+    private int displayWidth;
     private int countDigits;
 
     public DigitsControl(TextView display){
@@ -33,12 +32,9 @@ public class DigitsControl {
     }
     public void controlDigitStatic(){
         int length = display.getText().length();
-        countDigits += length*Constants.PIXEL_ONE_DIGIT;
+        countDigits+=length*Constants.PIXEL_ONE_DIGIT;
         if(displayWidth<countDigits)
             setSizeFontSmall();
-    }
-    public void cleanCount(){
-        countDigits = 0;
     }
 
     public static void setSizeFontDefault(){
@@ -47,13 +43,16 @@ public class DigitsControl {
     public static void setSizeFontSmall(){
         display.setTextSize(TypedValue.COMPLEX_UNIT_SP,fontSizeDefault/2);
     }
-    private void calcWidth(){
+    private void calcWidth() {
         display.postDelayed(new Runnable() {
             @Override
             public void run() {
                 displayWidth = display.getWidth();
             }
-        },1);
+        }, 1);
+    }
+    public void cleanCount(){
+        countDigits = 0;
     }
 
 }
