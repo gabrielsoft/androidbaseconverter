@@ -1,5 +1,6 @@
 package com.example.gabrielguedes.baseconverter.utilities;
 
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
@@ -30,12 +31,6 @@ public class DigitsControl {
             flip = false;
         }
     }
-    public void controlDigitStatic(){
-        int length = display.getText().length();
-        countDigits+=length*Constants.PIXEL_ONE_DIGIT;
-        if(displayWidth<countDigits)
-            setSizeFontSmall();
-    }
 
     public static void setSizeFontDefault(){
         display.setTextSize(TypedValue.COMPLEX_UNIT_SP,fontSizeDefault);
@@ -44,12 +39,13 @@ public class DigitsControl {
         display.setTextSize(TypedValue.COMPLEX_UNIT_SP,fontSizeDefault/2);
     }
     private void calcWidth() {
-        display.postDelayed(new Runnable() {
+        ViewTreeObserver observer = display.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
-            public void run() {
+            public void onGlobalLayout() {
                 displayWidth = display.getWidth();
             }
-        }, 1);
+        });
     }
     public void cleanCount(){
         countDigits = 0;
