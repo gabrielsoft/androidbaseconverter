@@ -1,12 +1,14 @@
 package com.example.gabrielguedes.baseconverter.gui_and_action;
 
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gabrielguedes.baseconverter.R;
@@ -48,6 +50,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     ImageButton btClean;
     @Bind(R.id.bt_backspace)
     ImageButton btBackspace;
+    @Bind(R.id.rootLayout)
+    CoordinatorLayout rootLayout;
 
     private MyThread threadAnimation;
 
@@ -67,7 +71,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         fabHex = new FabHex(fhex);
         fabOct = new FabOct(foct);
 
-        fabPlus = new FabPlus(fplus,fabBin,fabDec,fabHex,fabOct);
+        fabPlus = new FabPlus(rootLayout,fplus,fabBin,fabDec,fabHex,fabOct);
 
         fabPlus.getFab().setOnClickListener(this);
         fabBin.getFab().setOnClickListener(this);

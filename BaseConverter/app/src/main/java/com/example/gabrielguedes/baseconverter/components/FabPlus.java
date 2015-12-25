@@ -1,6 +1,8 @@
 package com.example.gabrielguedes.baseconverter.components;
 
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.view.ViewTreeObserver;
 
 /**
  * Created by Gabriel Guedes on 16/12/2015.
@@ -11,15 +13,21 @@ public class FabPlus {
     private FabDec fabDec;
     private FabHex fabHex;
     private FabOct fabOct;
+    private CoordinatorLayout rootLayout;
+
+    private float positionOpen;
+    private float positionClose;
 
     private boolean fabIsOpen = false;
 
-    public FabPlus(FloatingActionButton fabPlus,FabBin fabBin,FabDec fabDec,FabHex fabHex,FabOct fabOct){
+    public FabPlus(CoordinatorLayout rootLayout,FloatingActionButton fabPlus,FabBin fabBin,FabDec fabDec,FabHex fabHex,FabOct fabOct){
         this.fabPlus = fabPlus;
         this.fabBin = fabBin;
         this.fabDec = fabDec;
         this.fabHex = fabHex;
         this.fabOct = fabOct;
+        this.rootLayout = rootLayout;
+        calc();
     }
 
     public boolean isOpen(){
@@ -41,7 +49,7 @@ public class FabPlus {
         fabHex.toClose();
         fabOct.toClose();
 
-        fabPlus.animate().x(fabOct.getFab().getX()-50)
+        fabPlus.animate().x(positionClose)
                 .withStartAction(new Runnable() {
                     @Override
                     public void run() {
@@ -55,11 +63,10 @@ public class FabPlus {
                     }
                 });
         setFabIsOpen(false);
-
     }
 
     public void toOpen(){
-        fabPlus.animate().x(fabBin.getFab().getX()-200).
+        fabPlus.animate().x(positionOpen).
                 withEndAction(new Runnable() {
                     @Override
                     public void run() {
@@ -78,5 +85,22 @@ public class FabPlus {
 
     private void setFabIsOpen(boolean value){
         this.fabIsOpen = value;
+    }
+
+    private void calc(){
+        fabBin.getFab().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                float positionRootLayout = rootLayout.getX();
+                positionOpen = (fabBin.getFab().getX()-250) < positionRootLayout ? positionRootLayout: fabBin.getFab().getX()-250;
+            }
+        });
+
+        fabPlus.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                positionClose = fabOct.getFab().getX()-50;
+            }
+        });
     }
 }
