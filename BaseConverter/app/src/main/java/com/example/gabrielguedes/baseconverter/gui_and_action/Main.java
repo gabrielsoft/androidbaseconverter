@@ -6,9 +6,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gabrielguedes.baseconverter.R;
@@ -63,7 +63,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.main_layout);
         ButterKnife.bind(this);
 
-        display = new Display(disp);
+        display = new Display(disp,this,rootLayout);
         animations = new Animations(getApplicationContext());
 
         fabBin = new FabBin(fbin);
@@ -78,6 +78,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         fabDec.getFab().setOnClickListener(this);
         fabHex.getFab().setOnClickListener(this);
         fabOct.getFab().setOnClickListener(this);
+        disp.setOnClickListener(this);
 
         fabBin.setAnimations(animations);
         fabDec.setAnimations(animations);
@@ -121,7 +122,9 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.bt_backspace:
                 display.backspace();
-
+                break;
+            case R.id.display:
+                display.copy();
         }
     }
 

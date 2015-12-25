@@ -8,6 +8,7 @@ import java.util.HashMap;
  * Created by Gabriel Guedes on 14/12/2015.
  */
 public class Constants {
+    public static final String MESSAGE_COPY_NUMBER = "COPIED!";
     public static final String CONTEUDO_DISPLAY = "CONTEUDO_DISPLAY";
     public static final String TAG_FRAGMENT = "TAG_FRAGMENT";
     public static final String TAG_BINARY = "BINARY";
