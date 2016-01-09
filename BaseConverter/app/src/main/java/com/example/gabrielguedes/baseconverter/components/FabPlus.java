@@ -1,8 +1,15 @@
 package com.example.gabrielguedes.baseconverter.components;
 
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
+
+import com.example.gabrielguedes.baseconverter.R;
+import com.example.gabrielguedes.baseconverter.utilities.Constants;
 
 /**
  * Created by Gabriel Guedes on 16/12/2015.
@@ -17,6 +24,8 @@ public class FabPlus {
 
     private float positionOpen;
     private float positionClose;
+    private float positionFab;
+    private boolean firstTime = true;
 
     private boolean fabIsOpen = false;
 
@@ -60,9 +69,10 @@ public class FabPlus {
                     @Override
                     public void run() {
                         fabPlus.setClickable(true);
+                        setFabIsOpen(false);
+                        setImageOfFabPlus();
                     }
                 });
-        setFabIsOpen(false);
     }
 
     public void toOpen(){
@@ -74,9 +84,10 @@ public class FabPlus {
                         fabDec.toOpen();
                         fabHex.toOpen();
                         fabOct.toOpen();
+                        setFabIsOpen(true);
+                        setImageOfFabPlus();
                     }
                 });
-        setFabIsOpen(true);
     }
 
     public FloatingActionButton getFab(){
@@ -88,19 +99,29 @@ public class FabPlus {
     }
 
     private void calc(){
-        fabBin.getFab().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                float positionRootLayout = rootLayout.getX();
-                positionOpen = (fabBin.getFab().getX()-250) < positionRootLayout ? positionRootLayout: fabBin.getFab().getX()-250;
-            }
-        });
+                if(firstTime){
+                    float delta = (fabBin.getFab().getX() - fabBin.getFab().getWidth());
+                    positionOpen = delta < 0 ? 0:delta;
+                    delta = fabOct.getFab().getX() - (fabOct.getFab().getWidth())/2;
+                    positionClose = delta;
+                    firstTime = false;
+                }
 
-        fabPlus.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                positionClose = fabOct.getFab().getX()-50;
+
             }
         });
     }
+
+    private void setImageOfFabPlus(){
+        if(isOpen()){
+            fabPlus.setImageResource(Constants.ic_copy);
+        }
+        else{
+            fabPlus.setImageResource(Constants.ic_plus);
+        }
+    }
+
 }

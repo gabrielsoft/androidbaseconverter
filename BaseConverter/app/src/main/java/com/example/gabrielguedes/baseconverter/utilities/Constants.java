@@ -1,5 +1,7 @@
 package com.example.gabrielguedes.baseconverter.utilities;
 
+import android.graphics.drawable.Drawable;
+
 import com.example.gabrielguedes.baseconverter.R;
 
 import java.util.HashMap;
@@ -43,5 +45,8 @@ public class Constants {
         put(15,R.id.btf);
 
     }};
+
+    public static int ic_plus = R.mipmap.ic_plus;
+    public static int ic_copy = R.mipmap.copy;
 
 }

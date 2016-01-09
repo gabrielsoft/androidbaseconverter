@@ -6,8 +6,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -78,7 +78,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         fabDec.getFab().setOnClickListener(this);
         fabHex.getFab().setOnClickListener(this);
         fabOct.getFab().setOnClickListener(this);
-        disp.setOnClickListener(this);
 
         fabBin.setAnimations(animations);
         fabDec.setAnimations(animations);
@@ -99,6 +98,9 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                 if(!fabPlus.isOpen()){
                     threadAnimation = new MyThread(fabPlus);
                     threadAnimation.execute();
+                }
+                else{
+                    display.copy();
                 }
                 break;
             case R.id.fab_bin:
